@@ -176,8 +176,7 @@
         <div class="brand">DestinasiKu</div>
         
         <a href="#" class="menu-item active">Dashboard Wisata</a>
-        <a href="#" class="menu-item">Kelola Kategori</a>
-        <a href="#" class="menu-item">Pengaturan</a>
+        <a href="{{ route('kategori.index') }}" class="menu-item">Kelola Kategori</a>
 
         <form action="{{ route('logout') }}" method="POST" class="logout-form">
             @csrf

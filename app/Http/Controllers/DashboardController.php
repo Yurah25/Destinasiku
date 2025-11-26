@@ -25,16 +25,21 @@ class DashboardController extends Controller
     }
 
     // 3. MEMPROSES PENYIMPANAN DATA (STORE)
+   // 3. MEMPROSES PENYIMPANAN DATA (STORE)
     public function store(Request $request)
     {
         // A. Validasi Input
         $request->validate([
-            'nama' => 'required|string|max:255',
+            // Tambahkan '|unique:wisatas,nama' agar tidak boleh ada nama kembar
+            'nama' => 'required|string|max:255|unique:wisatas,nama', 
             'kategori_id' => 'required|exists:kategoris,id',
             'deskripsi' => 'required',
             'lokasi' => 'required',
             'harga_tiket' => 'required|numeric',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ], [
+            // (Opsional) Pesan error custom bahasa Indonesia
+            'nama.unique' => 'Nama wisata ini sudah terdaftar, harap gunakan nama lain.',
         ]);
 
         // B. Proses Upload Gambar
@@ -44,7 +49,8 @@ class DashboardController extends Controller
         }
 
         // C. Simpan ke Database
-        Wisata::create([
+        // Gunakan alamat lengkap Auth untuk menghindari error import
+        \App\Models\Wisata::create([
             'nama' => $request->nama,
             'slug' => \Illuminate\Support\Str::slug($request->nama),
             'kategori_id' => $request->kategori_id,
@@ -52,7 +58,7 @@ class DashboardController extends Controller
             'lokasi' => $request->lokasi,
             'harga_tiket' => $request->harga_tiket,
             'gambar' => $gambarPath,
-            'user_id' => Auth::id(), // <--- PERBAIKAN 2: Gunakan Auth::id()
+            'user_id' => \Illuminate\Support\Facades\Auth::id(),
         ]);
 
         // D. Kembali ke Dashboard

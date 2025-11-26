@@ -31,5 +31,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/edit/{id}', [DashboardController::class, 'edit'])->name('dashboard.edit');
     Route::put('/dashboard/update/{id}', [DashboardController::class, 'update'])->name('dashboard.update');
     Route::delete('/dashboard/delete/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
+    // ... route dashboard yang sudah ada ...
+    
+    // ROUTE KELOLA KATEGORI
+    Route::get('/kategori', [App\Http\Controllers\KategoriController::class, 'index'])->name('kategori.index');
+    Route::post('/kategori', [App\Http\Controllers\KategoriController::class, 'store'])->name('kategori.store');
+    Route::put('/kategori/{id}', [App\Http\Controllers\KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/kategori/{id}', [App\Http\Controllers\KategoriController::class, 'destroy'])->name('kategori.destroy');
 });
 
