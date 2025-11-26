@@ -154,7 +154,7 @@
 
             <div class="btn-group">
                 <a href="{{ route('dashboard') }}" class="btn-back">Batal</a>
-                <button type="submit" class="btn-save">Simpan Data</button>
+                <button type="submit" class="btn-save">Sismpan Data</button>
             </div>
         </form>
     </div>
