@@ -16,6 +16,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // --- ROUTE DASHBOARD ---
 Route::middleware(['auth'])->group(function () {
+
     // 1. Halaman Utama Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -24,4 +25,11 @@ Route::middleware(['auth'])->group(function () {
     
     // 3. Proses Simpan Data (Baru)
     Route::post('/dashboard/store', [DashboardController::class, 'store'])->name('dashboard.store');
+
+    // ... dalam group middleware auth ...
+    // --- TAMBAHAN BARU UNTUK EDIT & DELETE ---
+    Route::get('/dashboard/edit/{id}', [DashboardController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/dashboard/update/{id}', [DashboardController::class, 'update'])->name('dashboard.update');
+    Route::delete('/dashboard/delete/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
 });
+

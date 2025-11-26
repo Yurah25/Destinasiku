@@ -226,10 +226,15 @@
                         </td>
                         <td><span class="badge">{{ $wisata->kategori->nama }}</span></td>
                         <td>{{ $wisata->lokasi }}</td>
-                        <td>
-                            <a href="#" class="btn-action btn-edit">Edit</a>
-                            <button class="btn-action btn-delete">Hapus</button>
-                        </td>
+                       <td>
+    <a href="{{ route('dashboard.edit', $wisata->id) }}" class="btn-action btn-edit">Edit</a>
+    
+    <form action="{{ route('dashboard.destroy', $wisata->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn-action btn-delete">Hapus</button>
+    </form>
+</td>
                     </tr>
                     @empty
                     <tr>
