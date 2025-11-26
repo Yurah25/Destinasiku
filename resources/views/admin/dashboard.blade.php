@@ -188,10 +188,15 @@
     <div class="content">
         <div class="header-content">
             <h1 class="page-title">Daftar Tempat Wisata</h1>
-            <a href="#" class="btn-add">+ Tambah Data</a>
+            <a href="{{ route('dashboard.create') }}" class="btn-add">+ Tambah Data</a>
         </div>
 
         <div class="card">
+            @if(session('success'))
+    <div style="background: #e3f2fd; color: #1565c0; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #bbdefb;">
+        {{ session('success') }}
+    </div>
+@endif
             <table>
                 <thead>
                     <tr>

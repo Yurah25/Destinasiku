@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 // --- PERUBAHAN UTAMA DISINI ---
 // Karena 'welcome.blade.php' sudah dihapus, 
@@ -14,9 +15,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // --- ROUTE DASHBOARD ---
-use App\Http\Controllers\DashboardController; // <--- Tambahkan Baris Ini di paling atas file
-
 Route::middleware(['auth'])->group(function () {
-    // Arahkan ke DashboardController class index
+    // 1. Halaman Utama Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // 2. Menampilkan Form Tambah (Baru)
+    Route::get('/dashboard/create', [DashboardController::class, 'create'])->name('dashboard.create');
+    
+    // 3. Proses Simpan Data (Baru)
+    Route::post('/dashboard/store', [DashboardController::class, 'store'])->name('dashboard.store');
 });
