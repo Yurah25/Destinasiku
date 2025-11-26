@@ -9,8 +9,8 @@
         /* CSS STYLE TRAVELOKA VIBES */
         :root { --primary-blue: #1ba0e2; --primary-hover: #108ccf; --bg-light: #f7f9fa; --text-dark: #35405a; }
         body { font-family: 'Roboto', sans-serif; background-color: var(--bg-light); margin: 0; color: var(--text-dark); }
-        a { text-decoration: none; color: inherit; }
-
+        a { text-decoration: none; color: inherit; }      
+        .link ul{display: flex; list-style-type: none; justify-content: space-between;}
         /* NAVBAR */
         .navbar { background: white; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 24px; font-weight: 700; }
@@ -58,6 +58,13 @@
 
     <nav class="navbar">
         <div class="logo">Destinasi<span>Ku</span></div>
+        <div class="link">
+        <ul>
+            <li><a href="#" ></a>Home</li>
+            <li><a href="#" ></a>About</li>
+            <li><a href="#" ></a>Explore</li>
+        </ul>
+        </div>
         @auth
             <a href="{{ route('dashboard') }}" class="btn-dash">Dashboard Admin</a>
         @else
