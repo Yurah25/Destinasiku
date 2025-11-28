@@ -10,14 +10,14 @@
         :root { --primary-blue: #1ba0e2; --primary-hover: #108ccf; --bg-light: #f7f9fa; --text-dark: #35405a; }
         body { font-family: 'Roboto', sans-serif; background-color: var(--bg-light); margin: 0; color: var(--text-dark); }
         a { text-decoration: none; color: inherit; }      
-        .link ul{display: flex; list-style-type: none; justify-content: space-between;}
+
         /* NAVBAR */
+        .link ul{display: flex; list-style-type: none; gap: 2;}
         .navbar { background: white; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 24px; font-weight: 700; }
         .logo span { color: var(--primary-blue); }
         .btn-dash { border: 1px solid var(--primary-blue); color: var(--primary-blue); padding: 8px 15px; border-radius: 4px; font-weight: 700; transition: 0.3s; }
         .btn-dash:hover { background: var(--primary-blue); color: white; }
-
         /* HERO SECTION */
         .hero { background: linear-gradient(135deg, #1ba0e2 0%, #0077b6 100%); padding: 60px 20px; text-align: center; color: white; margin-bottom: 40px; }
         .hero h1 { margin: 0 0 10px; font-size: 32px; }

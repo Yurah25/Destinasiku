@@ -6,9 +6,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PublicController; // <--- PENTING: Import ini
 
 // --- 1. HALAMAN PENGUNJUNG (PUBLIC) ---
-Route::get('/', function () {
-    return view('welcome'); // atau view homepage Anda
-})->name('home');
+
+Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/wisata/{slug}', [PublicController::class, 'show'])->name('detail');
 
 // --- 2. ROUTE LOGIN & DASHBOARD (BIARKAN SEPERTI SEBELUMNYA) ---
